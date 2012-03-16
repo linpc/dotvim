@@ -13,4 +13,4 @@ Upgrading a plugin bundle:
 
 Thanks to:
 -----------------------
-http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
+* drewneil: [Synchronizing plugins with git submodules and pathogen] (http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/)
