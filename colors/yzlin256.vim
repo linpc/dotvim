@@ -143,7 +143,7 @@ else
     hi Error            cterm=NONE      ctermfg=231     ctermbg=52
     hi Identifier       cterm=NONE      ctermfg=131     ctermbg=NONE
     hi Ignore           cterm=NONE
-    hi Number           cterm=NONE      ctermfg=203     ctermbg=NONE
+    hi Number           cterm=NONE      ctermfg=203     ctermbg=235
     hi PreProc          cterm=NONE      ctermfg=35      ctermbg=NONE
     hi Special          cterm=NONE      ctermfg=135     ctermbg=NONE
     hi SpecialChar      cterm=NONE      ctermfg=135     ctermbg=235
@@ -152,6 +152,10 @@ else
     hi Type             cterm=NONE      ctermfg=207     ctermbg=NONE
     hi Underlined       cterm=BOLD      ctermfg=227     ctermbg=NONE
     hi TaglistTagName   cterm=BOLD      ctermfg=63      ctermbg=NONE
+
+    hi cErrInParen	cterm=NONE	ctermfg=LightRed	ctermbg=235
+    hi cErrInBracket	cterm=NONE	ctermfg=LightRed	ctermbg=235
+    hi Special          cterm=NONE      ctermfg=LightRed     ctermbg=NONE
 
     if v:version >= 700
         hi Pmenu        cterm=NONE      ctermfg=253     ctermbg=242

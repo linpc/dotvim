@@ -18,22 +18,27 @@ set backspace=indent,eol,start
 "hi Comment term=bold ctermfg=darkcyan
 "set enc=cp950
 "set termencoding=cp950
-set nomodeline                  " security reason
-set ignorecase
-set hls
-set showmatch
+set nomodeline		" security reason
+set autoread		" 正在編輯的檔案有變動時立即更新
+set ignorecase		" 搜尋不分大小寫
+set smartcase		" 若搜尋字包含大寫字母的話就有分大小寫
+set hlsearch		" 高亮度提示搜尋字
+set showmatch		" 顯示對應的括號
 set showcmd		" 顯示未完成的指令
-set incsearch
+set incsearch		" 一邊輸入搜尋字一邊跳到找到的地方
 set number		" 顯示行號
 set showmode		" 顯示現在的模式
 set title		" 自動設定標題
 " show the cursor position all the time
 set ruler
 
+" disable sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
 colorscheme yzlin256	" 使用面板
-" colorscheme dm4
-" colorscheme ir_black
-" colorscheme railscasts
 set t_Co=256		" 256 色
 
 " 檔案格式優先
@@ -67,14 +72,16 @@ highlight User3 term=underline cterm=underline ctermfg=yellow
 "highlight User4 term=underline cterm=underline ctermfg=white
 highlight User5 ctermfg=cyan
 highlight User6 ctermfg=white
+highlight User7 ctermfg=240
 
 " %1* -> User1's highlight, %2*->User2's highlight
 " =   -> Separation point between left and right aligned items.
 " <   -> Where to truncate line if too long.  Default is at the start.
-set statusline=%4*%<\ %1*[%F]
-set statusline+=%4*\ %5*[%{&encoding}, " encoding
-set statusline+=%{&fileformat}]%m " file format
-set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%4*\ \<\ %2*%P%4*\ \>
+set statusline=%4*%<\ %1*[%F]			" filename
+set statusline+=%4*\ %5*[%{&encoding},		" encoding
+set statusline+=%{&fileformat}]%m		" file format
+set statusline+=%4*\ %7*[%{CurDir()}]
+set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%V%4*\ \<\ %2*%P%4*\ \>
 
 " Syntax Fold
 syn region myFold start="{" end="}" transparent fold   
@@ -85,6 +92,8 @@ set foldmethod=manual
 set fdc=3
 " 方便中文重排設定
 " set formatoptions=mtcql
+
+let g:EasyMotion_leader_key = '\\'
 
 " tab config
 map tn :tabnext<CR>
@@ -163,6 +172,16 @@ else
 
 endif " has("autocmd")
 
+" set leader to ,
+let mapleader=","
+let g:mapleader=","
+
+" ,p toggles paste mode
+nmap <leader>p :set paste!<BAR>set paste?<CR>
+
+" :cd. change working directory to that of the current file
+cmap cd. lcd %:p:h
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -174,3 +193,10 @@ set tenc=utf-8		" Terminal編碼
 "set fileencodings=big5
 set fileencodings=utf-8,big5,euc-jp,gbk,euc-kr,utf-bom,iso8859-1,euc-jp,utf-16le
 
+
+function! CurDir()
+    let curdir = substitute(getcwd(), $HOME, "~", "")
+    return curdir
+endfunction
+
+map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
