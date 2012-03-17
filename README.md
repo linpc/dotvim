@@ -1,15 +1,25 @@
 How to install:
 -----------------------
-
     cd ~
     git clone http://github.com/linpc/dotvim.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
     cd ~/.vim
     git submodule update --init
 
-Upgrading a plugin bundle:
+Upgrading all bundled plugins:
 -----------------------
+update manually:
+    cd ~/.vim
+    git pull origin master
     git submodule foreach git pull origin master
+
+or just run the update.sh script:
+    ~/.vim/update.sh
+
+Install a new plugin as a git submodule:
+-----------------------
+    cd ~/.vim
+    git submodule add ${git_repository_url} bundle/${plugin_name}
 
 Thanks to:
 -----------------------

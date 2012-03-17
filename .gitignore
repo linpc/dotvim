@@ -1,0 +1,8 @@
+*~
+undofiles
+.netrwhist
+vimpyre.json
+vimpyre/
+bundle/*/doc/tag*
+bundle/*/.hg/cache/
+bundle/*/.hg/dirstate
