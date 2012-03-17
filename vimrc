@@ -1,5 +1,6 @@
 " pathogen
 call pathogen#infect()
+call pathogen#helptags()
 " 打開語法效果
 syntax on
 " 依檔名打開語法效果
@@ -129,10 +130,10 @@ fun! OmniComplete()
 endfun
 inoremap <silent> <S-Tab> <C-R>=OmniComplete()
 
-autocmd FileType c set ofu=ccomplete#Complete
+autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType php set ofu=phpcomplete#CompletePHP
-autocmd FileType python set ofu=pythoncomplete#Complete
-autocmd FileType javascript set ofu=javascriptcomplete#CompleteJS
+" autocmd FileType python set ofu=pythoncomplete#Complete
+" autocmd FileType javascript set ofu=javascriptcomplete#CompleteJS
 autocmd FileType html set ofu=htmlcomplete#CompleteTags
 autocmd FileType css set ofu=csscomplete#CompleteCSS
 autocmd FileType xml set ofu=xmlcomplete#CompleteTags
