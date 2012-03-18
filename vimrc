@@ -16,9 +16,6 @@ set smarttab
 set autoindent cindent
 set smartindent		" ??
 set backspace=indent,eol,start
-"hi Comment term=bold ctermfg=darkcyan
-"set enc=cp950
-"set termencoding=cp950
 set nomodeline		" security reason
 set autoread		" 正在編輯的檔案有變動時立即更新
 set ignorecase		" 搜尋不分大小寫
@@ -42,18 +39,15 @@ set tm=500
 colorscheme yzlin256	" 使用面板
 set t_Co=256		" 256 色
 
-" 檔案格式優先
-set ffs=unix,dos ff=unix
-
-" 關閉 vi 兼容模式
-set nocompatible
+set ffs=unix,dos ff=unix	" 檔案格式優先
+set nocompatible	" 關閉 vi 兼容模式
 
 " 將註解由深藍色變綠色
 set background=dark
 hi Comment ctermfg=cyan
+"hi Comment term=bold ctermfg=darkcyan
 hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231        ctermbg=57        cterm=underline
-" 將註解由深藍色變灰色
-" hi Comment ctermfg=240
+" hi Comment ctermfg=240	" 將註解由深藍色變灰色
 
 " 遇到 Makefile 就 set noexpandtab
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
@@ -61,10 +55,9 @@ autocmd BufRead,BufNewFile ?akefile* set sw=8
 
 " 底下的command status line為兩行
 " set cmdheight=2
-" 總是顯示資訊
-set laststatus=2
-" Line highlight 設此是游標整行會標註顏色
-set cursorline
+
+set laststatus=2	" 總是顯示資訊
+set cursorline		" Line highlight 設此是游標整行會標註顏色
 
 " 設定狀態列訊息
 highlight User1 ctermfg=red
@@ -91,20 +84,17 @@ set foldmethod=manual
 " set fdm=indent
 " ??
 set fdc=3
-" 方便中文重排設定
-" set formatoptions=mtcql
-
-let g:EasyMotion_leader_key = '\\'
+" set formatoptions=mtcql	" 方便中文重排設定
 
 " tab config
 map tn :tabnext<CR>
 map tp :tabprev<CR>
 map te :tabnew
 map tc :tabclose<CR>
-" nmap <C-Left> :tabprevious<CR>
-" nmap <C-Right> :tabnext<CR>
-nmap <F10> :tabprev<CR>
-nmap <F11> :tabnext<CR>
+nmap <C-Left> :tabprevious<CR>
+nmap <C-Right> :tabnext<CR>
+" nmap <F10> :tabprev<CR>
+" nmap <F11> :tabnext<CR>
 nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nmap <silent> <F9> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
@@ -144,10 +134,6 @@ autocmd FileType c :set equalprg=indent
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -173,12 +159,27 @@ else
 
 endif " has("autocmd")
 
+" ------------------------------------------------------------
+"  Plugins settings
+" ------------------------------------------------------------
+" bundle/vim-easymotion
+let g:EasyMotion_leader_key = ','
+
+" bundle/vim-autoclose
+let g:AutoClosePairs_add = "<> \""
+
+" ------------------------------------------------------------
+"  End of Plugins settings
+" ------------------------------------------------------------
+
 " set leader to ,
 let mapleader=","
 let g:mapleader=","
 
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
+" ,/ toggles hlsearch mode
+nmap <leader>/ :set hlsearch!<BAR>set hlsearch?<CR>
 
 " :cd. change working directory to that of the current file
 cmap cd. lcd %:p:h
@@ -187,17 +188,16 @@ cmap cd. lcd %:p:h
 set backspace=indent,eol,start
 
 set encoding=utf-8	" 內部編碼
-"set encoding=big5
 set fenc=utf-8		" 編碼
 set tenc=utf-8		" Terminal編碼
-"set fileencodings=ucs-bom,utf-8,big5
-"set fileencodings=big5
 set fileencodings=utf-8,big5,euc-jp,gbk,euc-kr,utf-bom,iso8859-1,euc-jp,utf-16le
-
+" for ugly big5 file: <c>onv
+nmap <leader>c :e ++enc=big5<CR>
 
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "")
     return curdir
 endfunction
 
+" show highlight group
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
