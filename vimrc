@@ -91,8 +91,10 @@ map tn :tabnext<CR>
 map tp :tabprev<CR>
 map te :tabnew
 map tc :tabclose<CR>
-nmap <C-Left> :tabprevious<CR>
-nmap <C-Right> :tabnext<CR>
+nmap [D :tabprev<CR>
+nmap [C :tabnext<CR>
+imap [D <ESC>:tabprev<CR>
+imap [C <ESC>:tabnext<CR>
 " nmap <F10> :tabprev<CR>
 " nmap <F11> :tabnext<CR>
 nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
