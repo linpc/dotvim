@@ -17,14 +17,17 @@ set autoindent cindent
 set smartindent		" ??
 set backspace=indent,eol,start
 set nomodeline		" security reason
+set esckeys		" map missed escape sequences (enables keypad keys)
 set autoread		" 正在編輯的檔案有變動時立即更新
 set ignorecase		" 搜尋不分大小寫
 set smartcase		" 若搜尋字包含大寫字母的話就有分大小寫
 set hlsearch		" 高亮度提示搜尋字
 set showmatch		" 顯示對應的括號
+set matchpairs+=<:>	" Allow % to bounce between angles too "
 set showcmd		" 顯示未完成的指令
 set incsearch		" 一邊輸入搜尋字一邊跳到找到的地方
 set number		" 顯示行號
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
 set showmode		" 顯示現在的模式
 set title		" 自動設定標題
 " show the cursor position all the time
@@ -97,8 +100,21 @@ imap [D <ESC>:tabprev<CR>
 imap [C <ESC>:tabnext<CR>
 " nmap <F10> :tabprev<CR>
 " nmap <F11> :tabnext<CR>
+" F8: move current tab to left
 nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+" F9: move current tab to right
 nmap <silent> <F9> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
+" normal mode
+map <UP> <NOP>
+map <DOWN> <NOP>
+map <LEFT> <NOP>
+map <RIGHT> <NOP>
+" insert mode
+inoremap <UP> <nop>
+inoremap <DOWN> <nop>
+inoremap <LEFT> <nop>
+inoremap <RIGHT> <nop>
 
 " Normal Mode時,可用tab及shift-Tab做縮排
 nmap <tab> v>
@@ -193,7 +209,7 @@ set encoding=utf-8	" 內部編碼
 set fenc=utf-8		" 編碼
 set tenc=utf-8		" Terminal編碼
 set fileencodings=utf-8,big5,euc-jp,gbk,euc-kr,utf-bom,iso8859-1,euc-jp,utf-16le
-" for ugly big5 file: <c>onv
+" for ugly big5 file: <c>onvert
 nmap <leader>c :e ++enc=big5<CR>
 
 function! CurDir()
@@ -201,5 +217,9 @@ function! CurDir()
     return curdir
 endfunction
 
-" show highlight group
+" appendix function keys:
+"
+" syntax debug: show highlight group
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" open the corresponding .{h,c,cpp} under the same directory
+map <F4> :tabe %:s#\.cpp$#.XY_CPP_XY#:s#\.h$#.cpp#:s#.XY_CPP_XY#.h#:s#\.cc$#.h#:s#\.[cC]$#.h#<CR>
