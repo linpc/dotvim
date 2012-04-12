@@ -39,7 +39,8 @@ set novisualbell
 set t_vb=
 set tm=500
 
-colorscheme yzlin256	" 使用面板
+" colorscheme yzlin256	" 使用面板
+colorscheme inkpot	" 使用面板
 set t_Co=256		" 256 色
 
 set ffs=unix,dos ff=unix	" 檔案格式優先
@@ -184,7 +185,8 @@ endif " has("autocmd")
 let g:EasyMotion_leader_key = ','
 
 " bundle/vim-autoclose
-let g:AutoClosePairs_add = "<> \""
+" let g:AutoClosePairs_add = "<> \""
+let g:AutoClosePairs_add = "\""
 
 " ------------------------------------------------------------
 "  End of Plugins settings

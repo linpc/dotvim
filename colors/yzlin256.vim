@@ -153,6 +153,7 @@ else
     hi Underlined       cterm=BOLD      ctermfg=227     ctermbg=NONE
     hi TaglistTagName   cterm=BOLD      ctermfg=63      ctermbg=NONE
 
+    " for misparse C syntax...
     hi cErrInParen	cterm=NONE	ctermfg=LightRed	ctermbg=235
     hi cErrInBracket	cterm=NONE	ctermfg=LightRed	ctermbg=235
     hi Special          cterm=NONE      ctermfg=LightRed     ctermbg=NONE
