@@ -184,9 +184,12 @@ endif " has("autocmd")
 " bundle/vim-easymotion
 let g:EasyMotion_leader_key = ','
 
-" bundle/vim-autoclose
-" let g:AutoClosePairs_add = "<> \""
-let g:AutoClosePairs_add = "\""
+" bundle/nerdtree: tells NERDTree to use ASCII chars
+let g:NERDTreeDirArrows = 0
+
+" bundle/supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabNoCompleteAfter = [',', ';', '{', '}', '(', ')', '[', ']', '\s']
 
 " ------------------------------------------------------------
 "  End of Plugins settings
