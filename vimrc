@@ -1,69 +1,93 @@
 " pathogen
 call pathogen#infect()
 call pathogen#helptags()
-" 打開語法效果
-syntax on
-" 依檔名打開語法效果
-filetype on
 
-" smarttab: 按 <TAB> 每次會跳 4, 跳了兩次會自動變 '\t'
-set sw=4
-set softtabstop=4	" ??
-set shiftwidth=4	" 自動縮排 4 格
-set tabstop=8
-set smarttab
+syntax on		" switch syntax on
 
-set autoindent cindent
-set smartindent		" ??
-set backspace=indent,eol,start
+set softtabstop=4	" press <TAB> operation when editing.
+set shiftwidth=4	" Number of spaces to use for each step of (auto)indent. for `cindent' `>>', `<<'
+set tabstop=8		" Number of spaces that a <Tab> in the file counts for.
+set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
+
+set autoindent cindent	" always set autoindenting on
+" set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
+set backspace=indent,eol,start	" allow backspacing over everything in insert mode
 set nomodeline		" security reason
 set esckeys		" map missed escape sequences (enables keypad keys)
-set autoread		" 正在編輯的檔案有變動時立即更新
-set ignorecase		" 搜尋不分大小寫
-set smartcase		" 若搜尋字包含大寫字母的話就有分大小寫
-set hlsearch		" 高亮度提示搜尋字
-set showmatch		" 顯示對應的括號
+set autoread		" any change to current editing file will be reload automatically
+set ignorecase		" ignore case when search
+set smartcase		" do case-sensitive search if any capital letter in keyword
+set hlsearch		" highlight the hunt keywords
+set showmatch		" show the match brackets
 set matchpairs+=<:>	" Allow % to bounce between angles too "
-set showcmd		" 顯示未完成的指令
-set incsearch		" 一邊輸入搜尋字一邊跳到找到的地方
-set number		" 顯示行號
-set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
-set showmode		" 顯示現在的模式
-set title		" 自動設定標題
+set showcmd		" Show (partial) command in the last line of the screen.
+set incsearch		" jump to the neaeest position when input keyword instantly
+set number		" show line numbers
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn
+set showmode		" show current mode of Vi(m)
+set nomodeline		" security reason
+" set title		" set terminal title
 " show the cursor position all the time
-set ruler
 
 " disable sound on errors
 set noerrorbells
 set novisualbell
-set t_vb=
-set tm=500
+set vb t_vb=
 
-" colorscheme yzlin256	" 使用面板
-colorscheme inkpot	" 使用面板
-set t_Co=256		" 256 色
+" ------------------------------------------------------------
+"  Editing Settings
+" ------------------------------------------------------------
 
-set ffs=unix,dos ff=unix	" 檔案格式優先
-set nocompatible	" 關閉 vi 兼容模式
+set ffs=unix,dos ff=unix	" file stored formate
+set nocompatible	" without Vi-compatible
 
-" 將註解由深藍色變綠色
-set background=dark
-hi Comment ctermfg=cyan
-"hi Comment term=bold ctermfg=darkcyan
-hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231        ctermbg=57        cterm=underline
-" hi Comment ctermfg=240	" 將註解由深藍色變灰色
-
-" 遇到 Makefile 就 set noexpandtab
+" set noexpandtab when editing Makefile
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
 autocmd BufRead,BufNewFile ?akefile* set sw=8
 
-" 底下的command status line為兩行
+" Syntax Fold
+syn region myFold start="{" end="}" transparent fold   
+syn sync fromstart
+set foldmethod=manual
+" set fdm=indent
+" ??
+set fdc=3
+" set formatoptions=mtcql	" for formating chinese
+
+" Normal Mode indent
+" nmap <Tab> v>
+" nmap <S-Tab> v<
+" Visual/Select Mode
+" vmap <Tab> >gv
+" vmap <S-Tab> <gv
+
+" ------------------------------------------------------------
+"  Color Scheme
+" ------------------------------------------------------------
+
+" colorscheme yzlin256
+colorscheme inkpot
+set t_Co=256		" 256-color terminal
+
+set background=dark
+" set comment to cyan
+hi Comment ctermfg=cyan
+"hi Comment term=bold ctermfg=darkcyan
+hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231        ctermbg=57        cterm=underline
+" hi Comment ctermfg=240	" set comment to gray
+
+" ------------------------------------------------------------
+"  Status line settings
+" ------------------------------------------------------------
+
+" command status line to height 2
 " set cmdheight=2
 
-set laststatus=2	" 總是顯示資訊
-set cursorline		" Line highlight 設此是游標整行會標註顏色
+set ruler
+set laststatus=2	" always show info
+set cursorline		" current line highlight
 
-" 設定狀態列訊息
+" set status line infomation
 highlight User1 ctermfg=red
 highlight User2 term=underline cterm=underline ctermfg=green
 highlight User3 term=underline cterm=underline ctermfg=yellow
@@ -81,16 +105,9 @@ set statusline+=%{&fileformat}]%m		" file format
 set statusline+=%4*\ %7*[%{CurDir()}]
 set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%V%4*\ \<\ %2*%P%4*\ \>
 
-" Syntax Fold
-syn region myFold start="{" end="}" transparent fold   
-syn sync fromstart
-set foldmethod=manual
-" set fdm=indent
-" ??
-set fdc=3
-" set formatoptions=mtcql	" 方便中文重排設定
-
-" tab config
+" ------------------------------------------------------------
+"  Tab view config
+" ------------------------------------------------------------
 map tn :tabnext<CR>
 map tp :tabprev<CR>
 map te :tabnew
@@ -106,46 +123,29 @@ nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 " F9: move current tab to right
 nmap <silent> <F9> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-" normal mode
-map <UP> <NOP>
-map <DOWN> <NOP>
-map <LEFT> <NOP>
-map <RIGHT> <NOP>
-" insert mode
-inoremap <UP> <nop>
-inoremap <DOWN> <nop>
-inoremap <LEFT> <nop>
-inoremap <RIGHT> <nop>
+" ------------------------------------------------------------
+"  autocmd, functions
+" ------------------------------------------------------------
 
-" Normal Mode時,可用tab及shift-Tab做縮排
-nmap <tab> v>
-nmap <s-tab> v<
-" Visual/Select Mode時，也行
-nmap <tab> v>
-nmap <s-tab> v<
-" Visual/Select Mode時，也行
-vmap <tab> >gv
-vmap <s-tab> <gv
+" OmniComplete
+" fun! OmniComplete()
+"     let left = strpart(getline('.'), col('.') - 2, 1)
+"     if left =~ "^$"
+"         return ""
+"     elseif left =~ ' $'
+"         return ""
+"     else
+"         return "\<C-x>\<C-o>"
+" endfun
+" inoremap <silent> <S-Tab> <C-R>=OmniComplete()
 
-" 設定 OmniComplete
-fun! OmniComplete()
-    let left = strpart(getline('.'), col('.') - 2, 1)
-    if left =~ "^$"
-        return ""
-    elseif left =~ ' $'
-        return ""
-    else
-        return "\<C-x>\<C-o>"
-endfun
-inoremap <silent> <S-Tab> <C-R>=OmniComplete()
-
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType php set ofu=phpcomplete#CompletePHP
+" autocmd FileType c set omnifunc=ccomplete#Complete
+" autocmd FileType php set ofu=phpcomplete#CompletePHP
 " autocmd FileType python set ofu=pythoncomplete#Complete
 " autocmd FileType javascript set ofu=javascriptcomplete#CompleteJS
-autocmd FileType html set ofu=htmlcomplete#CompleteTags
-autocmd FileType css set ofu=csscomplete#CompleteCSS
-autocmd FileType xml set ofu=xmlcomplete#CompleteTags
+" autocmd FileType html set ofu=htmlcomplete#CompleteTags
+" autocmd FileType css set ofu=csscomplete#CompleteCSS
+" autocmd FileType xml set ofu=xmlcomplete#CompleteTags
 
 " c autotidy by indent
 autocmd FileType c :set equalprg=indent
@@ -172,11 +172,12 @@ if has("autocmd")
 
   augroup END
 
-else
-
-  set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
+
+function! CurDir()
+    let curdir = substitute(getcwd(), $HOME, "~", "")
+    return curdir
+endfunction
 
 " ------------------------------------------------------------
 "  Plugins settings
@@ -192,8 +193,32 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = [',', ';', '{', '}', '(', ')', '[', ']', '\s']
 
 " ------------------------------------------------------------
-"  End of Plugins settings
+"  Encoding
 " ------------------------------------------------------------
+set encoding=utf-8	" internal encoding
+set fileencoding=utf-8	" file encoding
+set termencoding=utf-8	" Terminal encoding
+set fileencodings=utf-8,big5,euc-jp,gbk,euc-kr,utf-bom,iso8859-1,euc-jp,utf-16le
+" for ugly big5 file: <c>onvert
+nmap <leader>c :e ++enc=big5<CR>
+
+" ------------------------------------------------------------
+"  Special key mapings
+" ------------------------------------------------------------
+
+set timeoutlen=500  " milliseconds that is waited for a key code or mapped key sequence to complete.
+
+" diable arrow keys
+" normal mode
+map <UP> <Nop>
+map <DOWN> <Nop>
+map <LEFT> <Nop>
+map <RIGHT> <Nop>
+" insert mode
+inoremap <UP> <Nop>
+inoremap <DOWN> <Nop>
+inoremap <LEFT> <Nop>
+inoremap <RIGHT> <Nop>
 
 " set leader to ,
 let mapleader=","
@@ -204,27 +229,24 @@ nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,/ toggles hlsearch mode
 nmap <leader>/ :set hlsearch!<BAR>set hlsearch?<CR>
 
+" add a new line without entering insert mode
+noremap <CR> o<Esc>
+
 " :cd. change working directory to that of the current file
 cmap cd. lcd %:p:h
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" ------------------------------------------------------------
+"  Appendix function keys:
+" ------------------------------------------------------------
 
-set encoding=utf-8	" 內部編碼
-set fenc=utf-8		" 編碼
-set tenc=utf-8		" Terminal編碼
-set fileencodings=utf-8,big5,euc-jp,gbk,euc-kr,utf-bom,iso8859-1,euc-jp,utf-16le
-" for ugly big5 file: <c>onvert
-nmap <leader>c :e ++enc=big5<CR>
-
-function! CurDir()
-    let curdir = substitute(getcwd(), $HOME, "~", "")
-    return curdir
-endfunction
-
-" appendix function keys:
+" toggle NerdTree List
+map <F2> <Esc>:NERDTreeToggle<CR>
 "
 " syntax debug: show highlight group
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+"
 " open the corresponding .{h,c,cpp} under the same directory
 map <F4> :tabe %:s#\.cpp$#.XY_CPP_XY#:s#\.h$#.cpp#:s#.XY_CPP_XY#.h#:s#\.cc$#.h#:s#\.[cC]$#.h#<CR>
+"
+" F8: move tab to left
+" F9: move tab to right
