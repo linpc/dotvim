@@ -4,30 +4,23 @@ call pathogen#helptags()
 
 syntax on		" switch syntax on
 
-set softtabstop=4	" press <TAB> operation when editing.
-set shiftwidth=4	" Number of spaces to use for each step of (auto)indent. for `cindent' `>>', `<<'
-set tabstop=8		" Number of spaces that a <Tab> in the file counts for.
-set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
-
-set autoindent cindent	" always set autoindenting on
-" set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
-set backspace=indent,eol,start	" allow backspacing over everything in insert mode
-set nomodeline		" security reason
 set esckeys		" map missed escape sequences (enables keypad keys)
 set autoread		" any change to current editing file will be reload automatically
 set ignorecase		" ignore case when search
 set smartcase		" do case-sensitive search if any capital letter in keyword
 set hlsearch		" highlight the hunt keywords
+set incsearch		" jump to the neaeest position when input keyword instantly
 set showmatch		" show the match brackets
 set matchpairs+=<:>	" Allow % to bounce between angles too "
 set showcmd		" Show (partial) command in the last line of the screen.
-set incsearch		" jump to the neaeest position when input keyword instantly
 set number		" show line numbers
 set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn
 set showmode		" show current mode of Vi(m)
 set nomodeline		" security reason
 " set title		" set terminal title
 " show the cursor position all the time
+set nocompatible	" without Vi-compatible
+set scrolloff=3		" start scrolling when n lines away from margins
 
 " disable sound on errors
 set noerrorbells
@@ -38,12 +31,18 @@ set vb t_vb=
 "  Editing Settings
 " ------------------------------------------------------------
 
-set ffs=unix,dos ff=unix	" file stored formate
-set nocompatible	" without Vi-compatible
+set softtabstop=4	" press <TAB> operation when editing.
+set shiftwidth=4	" Number of spaces to use for each step of (auto)indent. for `cindent' `>>', `<<'
+set tabstop=8		" Number of spaces that a <Tab> in the file counts for.
+set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
 
 " set noexpandtab when editing Makefile
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
 autocmd BufRead,BufNewFile ?akefile* set sw=8
+
+set autoindent cindent	" always set autoindenting on
+" set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
+set backspace=indent,eol,start	" allow backspacing over everything in insert mode
 
 " Syntax Fold
 syn region myFold start="{" end="}" transparent fold   
@@ -53,13 +52,6 @@ set foldmethod=manual
 " ??
 set fdc=3
 " set formatoptions=mtcql	" for formating chinese
-
-" Normal Mode indent
-" nmap <Tab> v>
-" nmap <S-Tab> v<
-" Visual/Select Mode
-" vmap <Tab> >gv
-" vmap <S-Tab> <gv
 
 " ------------------------------------------------------------
 "  Color Scheme
@@ -108,6 +100,7 @@ set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%V%4*\ \<\ %2*%P%4*\ \>
 " ------------------------------------------------------------
 "  Tab view config
 " ------------------------------------------------------------
+
 map tn :tabnext<CR>
 map tp :tabprev<CR>
 map te :tabnew
@@ -193,8 +186,12 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = [',', ';', '{', '}', '(', ')', '[', ']', '\s']
 
 " ------------------------------------------------------------
-"  Encoding
+"  Format, Encoding
 " ------------------------------------------------------------
+
+set ffs=unix,dos ff=unix	" file stored formate
+set nobomb		" no BOM(Byte Order Mark)"
+
 set encoding=utf-8	" internal encoding
 set fileencoding=utf-8	" file encoding
 set termencoding=utf-8	" Terminal encoding
@@ -219,6 +216,14 @@ inoremap <UP> <Nop>
 inoremap <DOWN> <Nop>
 inoremap <LEFT> <Nop>
 inoremap <RIGHT> <Nop>
+" insert mode: map <C-[HJKL]> to arrow keys
+imap <C-H> <Esc>i
+imap <C-J> <Esc>ja
+imap <C-K> <Esc>ka
+imap <C-L> <Esc>la
+
+" double 0 == ^
+map 00 ^
 
 " set leader to ,
 let mapleader=","
