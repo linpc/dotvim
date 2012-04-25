@@ -253,5 +253,8 @@ map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<
 " open the corresponding .{h,c,cpp} under the same directory
 map <F4> :tabe %:s#\.cpp$#.XY_CPP_XY#:s#\.h$#.cpp#:s#.XY_CPP_XY#.h#:s#\.cc$#.h#:s#\.[cC]$#.h#<CR>
 "
+" toggle TagList sider
+map <F6> :TlistToggle<CR>
+"
 " F8: move tab to left
 " F9: move tab to right
