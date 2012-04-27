@@ -1,6 +1,6 @@
-" pathogen
-call pathogen#infect()
-call pathogen#helptags()
+" -------------------------------------------------------------- "
+"  Editor Environment Settings					 "
+" -------------------------------------------------------------- "
 
 syntax on		" switch syntax on
 
@@ -27,9 +27,9 @@ set noerrorbells
 set novisualbell
 set vb t_vb=
 
-" ------------------------------------------------------------
-"  Editing Settings
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Editing Settings						 "
+" -------------------------------------------------------------- "
 
 set softtabstop=4	" press <TAB> operation when editing.
 set shiftwidth=4	" Number of spaces to use for each step of (auto)indent. for `cindent' `>>', `<<'
@@ -53,9 +53,9 @@ set foldmethod=manual
 set fdc=3
 " set formatoptions=mtcql	" for formating chinese
 
-" ------------------------------------------------------------
-"  Color Scheme
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Color Scheme							 "
+" -------------------------------------------------------------- "
 
 " colorscheme yzlin256
 colorscheme inkpot
@@ -68,9 +68,9 @@ hi Comment ctermfg=cyan
 hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231        ctermbg=57        cterm=underline
 " hi Comment ctermfg=240	" set comment to gray
 
-" ------------------------------------------------------------
-"  Status line settings
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Status line settings						 "
+" -------------------------------------------------------------- "
 
 " command status line to height 2
 " set cmdheight=2
@@ -97,28 +97,27 @@ set statusline+=%{&fileformat}]%m		" file format
 set statusline+=%4*\ %7*[%{CurDir()}]
 set statusline+=%4*%=\ %6*%y%4*\ %3*%l%4*,\ %3*%c%V%4*\ \<\ %2*%P%4*\ \>
 
-" ------------------------------------------------------------
-"  Tab view config
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Tab view config						 "
+" -------------------------------------------------------------- "
 
-map tn :tabnext<CR>
-map tp :tabprev<CR>
-map te :tabnew
-map tc :tabclose<CR>
+nmap tn :tabnext<CR>
+nmap tp :tabprev<CR>
+nmap te :tabnew 
+nmap tc :tabclose<CR>
 nmap [D :tabprev<CR>
 nmap [C :tabnext<CR>
 imap [D <ESC>:tabprev<CR>
 imap [C <ESC>:tabnext<CR>
-" nmap <F10> :tabprev<CR>
-" nmap <F11> :tabnext<CR>
+
 " F8: move current tab to left
 nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 " F9: move current tab to right
 nmap <silent> <F9> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-" ------------------------------------------------------------
-"  autocmd, functions
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  autocmd, functions						 "
+" -------------------------------------------------------------- "
 
 " OmniComplete
 " fun! OmniComplete()
@@ -185,9 +184,14 @@ function ChangeNuMode()
     endif
 endfunction
 
-" ------------------------------------------------------------
-"  Plugins settings
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Plugins settings						 "
+" -------------------------------------------------------------- "
+
+" pathogen
+call pathogen#infect()
+call pathogen#helptags()
+
 " bundle/vim-easymotion
 let g:EasyMotion_leader_key = ','
 
@@ -199,7 +203,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = [',', ';', '{', '}', '(', ')', '[', ']', '\s']
 
 " bundle/zencoding
-let g:user_zen_leader_key = '<c-z>'
+let g:user_zen_leader_key = '<C-Z>'
 let g:user_zen_settings = {
   \  'lang' : 'zh-tw',
   \  'html' : {
@@ -231,9 +235,9 @@ let g:user_zen_settings = {
   \  },
   \}
 
-" ------------------------------------------------------------
-"  Format, Encoding
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Format, Encoding						 "
+" -------------------------------------------------------------- "
 
 set ffs=unix,dos ff=unix	" file stored formate
 set nobomb		" no BOM(Byte Order Mark)"
@@ -245,11 +249,11 @@ set fileencodings=utf-8,big5,euc-jp,gbk,euc-kr,utf-bom,iso8859-1,euc-jp,utf-16le
 " for ugly big5 file: <c>onvert
 nmap <leader>c :e ++enc=big5<CR>
 
-" ------------------------------------------------------------
-"  Special key mapings
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Special key mapings						 "
+" -------------------------------------------------------------- "
 
-set timeoutlen=500  " milliseconds that is waited for a key code or mapped key sequence to complete.
+set timeoutlen=1000  " milliseconds that is waited for a key code or mapped key sequence to complete.
 
 " diable arrow keys
 " normal mode
@@ -269,9 +273,10 @@ imap <C-K> <Esc>ka
 imap <C-L> <Esc>la
 
 " double 0 == ^
-map 00 ^
+nmap 00 ^
+vmap 00 ^
 
-" set leader to ,
+" set leader to ','
 let mapleader=","
 let g:mapleader=","
 
@@ -279,7 +284,7 @@ let g:mapleader=","
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,/ toggles hlsearch mode
 nmap <leader>/ :set hlsearch!<BAR>set hlsearch?<CR>
-" 
+" ,l rotate between nu, rnu, no{nu,rnu}
 nmap <leader>l :call ChangeNuMode()<CR>
 
 " add a new line without entering insert mode
@@ -288,21 +293,23 @@ noremap <CR> o<Esc>
 " :cd. change working directory to that of the current file
 cmap cd. lcd %:p:h
 
-" ------------------------------------------------------------
-"  Appendix function keys:
-" ------------------------------------------------------------
+" -------------------------------------------------------------- "
+"  Appendix function keys					 "
+" -------------------------------------------------------------- "
+
+" <F1> default vim helper
 
 " toggle NerdTree List
-map <F2> <Esc>:NERDTreeToggle<CR>
-"
+nmap <F2> <Esc>:NERDTreeToggle<CR>
+
 " syntax debug: show highlight group
-map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-"
+nmap <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " open the corresponding .{h,c,cpp} under the same directory
-map <F4> :tabe %:s#\.cpp$#.XY_CPP_XY#:s#\.h$#.cpp#:s#.XY_CPP_XY#.h#:s#\.cc$#.h#:s#\.[cC]$#.h#<CR>
-"
+nmap <F4> :tabe %:s#\.cpp$#.XY_CPP_XY#:s#\.h$#.cpp#:s#.XY_CPP_XY#.h#:s#\.cc$#.h#:s#\.[cC]$#.h#<CR>
+
 " toggle TagList sider
-map <F6> :TlistToggle<CR>
-"
+nmap <F6> :TlistToggle<CR>
+
 " F8: move tab to left
 " F9: move tab to right
