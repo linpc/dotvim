@@ -10,16 +10,16 @@ How to install:
 Upgrading all bundled plugins:
 -----------------------
 
-update manually:
+Just run the update.sh script:
+
+    ~/.vim/update.sh
+
+or you can update them manually:
 
     cd ~/.vim
     git pull origin master
     git submodule update
     git submodule foreach git pull origin master
-
-or just run the update.sh script:
-
-    ~/.vim/update.sh
 
 Install a new plugin as a git submodule:
 -----------------------
@@ -32,11 +32,11 @@ Delete a submodule:
 
 1. Remove it from .gitmodules
 2. git rm --cached bundle/${plugin-name}
+3. rm -rf bundle/${plugin-name}
 
 Plugins to be installed:
 -----------------------
 
-* [Tag List] (https://github.com/vim-scripts/taglist.vim): Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
 * [neocomplcache] (https://github.com/Shougo/neocomplcache): Ultimate auto-completion system for Vim.
 * [checksyntax] (https://github.com/tomtom/checksyntax_vim): Check a file's syntax when saving a file (php, ruby, tex ...) with vim.
 * [easytags.vim] (https://github.com/xolox/vim-easytags): Automated tag file generation and syntax highlighting of tags in Vim
