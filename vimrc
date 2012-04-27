@@ -172,6 +172,19 @@ function! CurDir()
     return curdir
 endfunction
 
+function ChangeNuMode()
+    if (&number)
+	set rnu
+	set rnu?
+    elseif (&rnu)
+	set nornu
+	set nonu?
+    else
+	set nu
+	set nu?
+    endif
+endfunction
+
 " ------------------------------------------------------------
 "  Plugins settings
 " ------------------------------------------------------------
@@ -184,6 +197,39 @@ let g:NERDTreeDirArrows = 0
 " bundle/supertab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabNoCompleteAfter = [',', ';', '{', '}', '(', ')', '[', ']', '\s']
+
+" bundle/zencoding
+let g:user_zen_leader_key = '<c-z>'
+let g:user_zen_settings = {
+  \  'lang' : 'zh-tw',
+  \  'html' : {
+  \    'filters' : 'html',
+  \  },
+  \  'perl' : {
+  \    'aliases' : {
+  \      'req' : "require '|'"
+  \    },
+  \    'snippets' : {
+  \      'use' : "use strict;\nuse warnings;\n\n",
+  \      'w' : "warn \"${cursor}\";",
+  \    },
+  \  },
+  \  'php' : {
+  \    'extends' : 'html',
+  \    'filters' : 'html,c',
+  \  },
+  \  'css' : {
+  \    'filters' : 'fc',
+  \  },
+  \  'javascript' : {
+  \    'snippets' : {
+  \      'jq' : "$(function() {\n\t${cursor}${child}\n});",
+  \      'jq:each' : "$.each(arr, function(index, item)\n\t${child}\n});",
+  \      'fn' : "(function() {\n\t${cursor}\n})();",
+  \      'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
+  \    },
+  \  },
+  \}
 
 " ------------------------------------------------------------
 "  Format, Encoding
@@ -233,6 +279,8 @@ let g:mapleader=","
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,/ toggles hlsearch mode
 nmap <leader>/ :set hlsearch!<BAR>set hlsearch?<CR>
+" 
+nmap <leader>l :call ChangeNuMode()<CR>
 
 " add a new line without entering insert mode
 noremap <CR> o<Esc>
