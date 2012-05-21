@@ -39,6 +39,8 @@ set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
 " set noexpandtab when editing Makefile
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
 autocmd BufRead,BufNewFile ?akefile* set sw=8
+" set expandtab when editing .py, .md
+autocmd BufRead,BufNewFile *.{md,py} set expandtab
 
 set autoindent cindent	" always set autoindenting on
 " set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
