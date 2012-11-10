@@ -41,10 +41,13 @@ set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
 autocmd BufRead,BufNewFile ?akefile* set sw=8
 " set expandtab when editing .py, .md
 autocmd BufRead,BufNewFile *.{md,py} set expandtab
+autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 
 set autoindent cindent	" always set autoindenting on
 " set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
 set backspace=indent,eol,start	" allow backspacing over everything in insert mode
+
+set nobackup		" no need to make backup files
 
 " Syntax Fold
 syn region myFold start="{" end="}" transparent fold   
@@ -61,6 +64,7 @@ set foldmethod=manual
 
 " colorscheme yzlin256
 colorscheme inkpot
+" colorscheme slate
 set t_Co=256		" 256-color terminal
 
 set background=dark
@@ -69,6 +73,9 @@ hi Comment ctermfg=cyan
 "hi Comment term=bold ctermfg=darkcyan
 hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231        ctermbg=57        cterm=underline
 " hi Comment ctermfg=240	" set comment to gray
+
+highlight ColorColumn ctermbg=235 ctermfg=white guibg=#002929
+set colorcolumn=80
 
 " -------------------------------------------------------------- "
 "  Status line settings						 "
@@ -79,7 +86,7 @@ hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231 
 
 set ruler
 set laststatus=2	" always show info
-set cursorline		" current line highlight
+" set cursorline		" current line highlight
 
 " set status line infomation
 highlight User1 ctermfg=red
@@ -111,6 +118,7 @@ nmap [D :tabprev<CR>
 nmap [C :tabnext<CR>
 imap [D <ESC>:tabprev<CR>
 imap [C <ESC>:tabnext<CR>
+inoremap jj <ESC>
 
 " F8: move current tab to left
 nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
@@ -281,6 +289,8 @@ vmap 00 ^
 let mapleader=","
 let g:mapleader=","
 
+" ,q to quick quit
+nmap <leader>q :q<CR>
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,/ toggles hlsearch mode
