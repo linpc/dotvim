@@ -77,6 +77,9 @@ hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231 
 highlight ColorColumn ctermbg=235 ctermfg=white guibg=#002929
 set colorcolumn=80
 
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace / \+$\| \+\ze\t\| \+\//
+
 " -------------------------------------------------------------- "
 "  Status line settings						 "
 " -------------------------------------------------------------- "
