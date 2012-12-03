@@ -42,6 +42,9 @@ autocmd BufRead,BufNewFile ?akefile* set sw=8
 " set expandtab when editing .py, .md
 autocmd BufRead,BufNewFile *.{md,py} set expandtab
 autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
+" set tabstop in LaTeX file
+autocmd BufRead,BufNewFile *.tex set tabstop=4
+autocmd BufRead,BufNewFile *.php set sw=8
 
 set autoindent cindent	" always set autoindenting on
 " set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
@@ -74,8 +77,10 @@ hi Comment ctermfg=cyan
 hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231        ctermbg=57        cterm=underline
 " hi Comment ctermfg=240	" set comment to gray
 
-highlight ColorColumn ctermbg=235 ctermfg=white guibg=#002929
-set colorcolumn=80
+if version >= 703
+    highlight ColorColumn ctermbg=235 ctermfg=white guibg=#002929
+    set colorcolumn=80
+endif
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace / \+$\| \+\ze\t\| \+\//
