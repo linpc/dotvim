@@ -38,12 +38,12 @@ set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
 
 " set noexpandtab when editing Makefile
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
-autocmd BufRead,BufNewFile ?akefile* set sw=8
+autocmd BufRead,BufNewFile ?akefile* set sw=8 ts=8
 " set expandtab when editing .py, .md
 autocmd BufRead,BufNewFile *.{md,py} set expandtab
 autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 " set tabstop in LaTeX file
-autocmd BufRead,BufNewFile *.tex set tabstop=4
+autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
 autocmd BufRead,BufNewFile *.php set sw=8
 
 set autoindent cindent	" always set autoindenting on
@@ -53,13 +53,16 @@ set backspace=indent,eol,start	" allow backspacing over everything in insert mod
 set nobackup		" no need to make backup files
 
 " Syntax Fold
-syn region myFold start="{" end="}" transparent fold   
+syn region myFold start="{" end="}" transparent fold
 syn sync fromstart
 set foldmethod=manual
 " set fdm=indent
 " ??
 "set fdc=3
 " set formatoptions=mtcql	" for formating chinese
+
+" Spell function
+set spellfile=dict.en.add
 
 " -------------------------------------------------------------- "
 "  Color Scheme							 "
@@ -78,13 +81,18 @@ hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231 
 " hi Comment ctermfg=240	" set comment to gray
 
 if version >= 703
-    highlight ColorColumn ctermbg=235 ctermfg=white guibg=#002929
+    highlight ColorColumn ctermbg=237 ctermfg=white guibg=#002929
     set colorcolumn=80
 endif
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace / \+$\| \+\ze\t\| \+\//
 
+" Spell
+hi clear SpellBad
+hi SpellBad term=underline cterm=underline ctermfg=red
+hi SpellCap term=underline cterm=underline ctermfg=green
+hi SpellRare term=underline cterm=underline ctermfg=yellow
 " -------------------------------------------------------------- "
 "  Status line settings						 "
 " -------------------------------------------------------------- "
