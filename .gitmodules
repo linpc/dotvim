@@ -19,3 +19,6 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = git://github.com/mattn/emmet-vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
