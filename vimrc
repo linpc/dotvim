@@ -35,6 +35,7 @@ set softtabstop=4	" press <TAB> operation when editing.
 set shiftwidth=4	" Number of spaces to use for each step of (auto)indent. for `cindent' `>>', `<<'
 set tabstop=8		" Number of spaces that a <Tab> in the file counts for.
 set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
+set cinoptions=(1s	" http://linux.chinaitlab.com/manual/vim/indent.html
 
 " set noexpandtab when editing Makefile
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
@@ -166,12 +167,12 @@ nmap <silent> <F9> :execute 'silent! tabmove ' . tabpagenr()<CR>
 " autocmd FileType xml set ofu=xmlcomplete#CompleteTags
 
 " c autotidy by indent
-autocmd FileType c :set equalprg=indent
+" autocmd FileType c :set equalprg=indent
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  filetype plugin indent on
+  filetype plugin on
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
