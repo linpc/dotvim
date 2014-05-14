@@ -87,7 +87,7 @@ if version >= 703
 endif
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace / \+$\| \+\ze\t\| \+\//
+match ExtraWhitespace /\s\+$\| \+$\| \+\ze\t\| \+\//
 
 " Spell
 hi clear SpellBad
