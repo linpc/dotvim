@@ -45,7 +45,7 @@ autocmd BufRead,BufNewFile *.{md,py} set expandtab
 autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 " set tabstop in LaTeX file
 autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
-autocmd BufRead,BufNewFile *.php set sw=8
+autocmd BufRead,BufNewFile *.php set sw=4 sts=4 expandtab
 
 set autoindent cindent	" always set autoindenting on
 " set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
@@ -210,6 +210,28 @@ function ChangeNuMode()
     endif
 endfunction
 
+function ChangeTabMode()
+    let sw=&shiftwidth
+    let sts=&softtabstop
+
+    if (sw == 4 && sts == 4 && &expandtab == 1)
+	set softtabstop=8
+	set shiftwidth=8
+	set noexpandtab
+	echo "softtabstop = 8, shiftwidth = 8, noexpandtab"
+    elseif (sw == 8 && sts == 8 && &expandtab == 0)
+	set softtabstop=4
+	set shiftwidth=4
+	echo "softtabstop = 4, shiftwidth = 4, noexpandtab"
+    elseif (sw == 4 && sts == 4 && &expandtab == 0)
+	set expandtab
+	echo "softtabstop = 4, shiftwidth = 4, expandtab"
+    else
+	echo "No change, softtabstop = " &softtabstop ", shiftwidth = " &shiftwidth
+	set expandtab?
+    endif
+endfunction
+
 " -------------------------------------------------------------- "
 "  Plugins settings						 "
 " -------------------------------------------------------------- "
@@ -260,6 +282,9 @@ let g:user_zen_settings = {
   \    },
   \  },
   \}
+
+" bundle/syntastic
+let g:syntastic_php_phpcs_args = "--standard=PSR2 --tab-width=4"
 
 " -------------------------------------------------------------- "
 "  Format, Encoding						 "
@@ -314,6 +339,8 @@ nmap <leader>p :set paste!<BAR>set paste?<CR>
 nmap <leader>/ :set hlsearch!<BAR>set hlsearch?<CR>
 " ,l rotate between nu, rnu, no{nu,rnu}
 nmap <leader>l :call ChangeNuMode()<CR>
+" ,<TAB> rotate between tab indention-mode
+nmap <leader><TAB> :call ChangeTabMode()<CR>
 
 " add a new line without entering insert mode
 noremap <CR> o<Esc>
