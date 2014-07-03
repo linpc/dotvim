@@ -41,7 +41,7 @@ set cinoptions=(1s	" http://linux.chinaitlab.com/manual/vim/indent.html
 "autocmd BufRead,BufNewFile ?akefile* set noexpandtab
 autocmd BufRead,BufNewFile ?akefile* set sw=8 ts=8
 " set expandtab when editing .py, .md
-autocmd BufRead,BufNewFile *.{md,py} set expandtab
+autocmd BufRead,BufNewFile *.{md,pl,py} set expandtab
 autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 " set tabstop in LaTeX file
 autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
