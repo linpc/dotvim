@@ -246,10 +246,6 @@ let g:EasyMotion_leader_key = ','
 " bundle/nerdtree: tells NERDTree to use ASCII chars
 let g:NERDTreeDirArrows = 0
 
-" bundle/supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabNoCompleteAfter = [',', ';', '{', '}', '(', ')', '[', ']', '\s']
-
 " bundle/zencoding
 let g:user_zen_leader_key = '<C-Z>'
 let g:user_zen_settings = {
