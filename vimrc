@@ -246,39 +246,6 @@ let g:EasyMotion_leader_key = ','
 " bundle/nerdtree: tells NERDTree to use ASCII chars
 let g:NERDTreeDirArrows = 0
 
-" bundle/zencoding
-let g:user_zen_leader_key = '<C-Z>'
-let g:user_zen_settings = {
-  \  'lang' : 'zh-tw',
-  \  'html' : {
-  \    'filters' : 'html',
-  \  },
-  \  'perl' : {
-  \    'aliases' : {
-  \      'req' : "require '|'"
-  \    },
-  \    'snippets' : {
-  \      'use' : "use strict;\nuse warnings;\n\n",
-  \      'w' : "warn \"${cursor}\";",
-  \    },
-  \  },
-  \  'php' : {
-  \    'extends' : 'html',
-  \    'filters' : 'html,c',
-  \  },
-  \  'css' : {
-  \    'filters' : 'fc',
-  \  },
-  \  'javascript' : {
-  \    'snippets' : {
-  \      'jq' : "$(function() {\n\t${cursor}${child}\n});",
-  \      'jq:each' : "$.each(arr, function(index, item)\n\t${child}\n});",
-  \      'fn' : "(function() {\n\t${cursor}\n})();",
-  \      'tm' : "setTimeout(function() {\n\t${cursor}\n}, 100);",
-  \    },
-  \  },
-  \}
-
 " bundle/syntastic
 let g:syntastic_php_phpcs_args = "--standard=PSR2 --tab-width=4"
 
