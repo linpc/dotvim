@@ -294,6 +294,8 @@ vmap 00 ^
 let mapleader=","
 let g:mapleader=","
 
+" ,1 to quick write
+nmap <leader>1 :w!<CR>
 " ,q to quick quit
 nmap <leader>q :q<CR>
 " ,p toggles paste mode
