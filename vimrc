@@ -37,16 +37,6 @@ set tabstop=8		" Number of spaces that a <Tab> in the file counts for.
 set smarttab		" press <TAB> will expand 4 spaces, twice <TAB> will go '\t'
 set cinoptions=(1s	" http://linux.chinaitlab.com/manual/vim/indent.html
 
-" set noexpandtab when editing Makefile
-"autocmd BufRead,BufNewFile ?akefile* set noexpandtab
-autocmd BufRead,BufNewFile ?akefile* set sw=8 ts=8
-" set expandtab when editing .py, .md
-autocmd BufRead,BufNewFile *.{md,pl,py} set expandtab
-autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
-" set tabstop in LaTeX file
-autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
-autocmd BufRead,BufNewFile *.php set sw=4 sts=4 expandtab
-
 set autoindent cindent	" always set autoindenting on
 " set smartindent	" Do smart autoindenting when starting a new line. REPLACED by 'cindent'
 set backspace=indent,eol,start	" allow backspacing over everything in insert mode
@@ -64,6 +54,24 @@ set foldmethod=manual
 
 " Spell function
 set spellfile=dict.en.add
+
+" -------------------------------------------------------------- "
+" Filetype specific settings					 "
+" -------------------------------------------------------------- "
+
+" by filename extension
+" set noexpandtab when editing Makefile
+"autocmd BufRead,BufNewFile ?akefile* set noexpandtab
+autocmd BufRead,BufNewFile ?akefile* set sw=8 ts=8
+" set expandtab when editing .py, .md
+autocmd BufRead,BufNewFile *.{md,pl,py} set expandtab
+autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
+" set tabstop in LaTeX file
+autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
+autocmd BufRead,BufNewFile *.php set sw=4 sts=4 expandtab
+
+" by filetype
+autocmd FileType perl set expandtab
 
 " -------------------------------------------------------------- "
 "  Color Scheme							 "
@@ -94,6 +102,7 @@ hi clear SpellBad
 hi SpellBad term=underline cterm=underline ctermfg=red
 hi SpellCap term=underline cterm=underline ctermfg=green
 hi SpellRare term=underline cterm=underline ctermfg=yellow
+
 " -------------------------------------------------------------- "
 "  Status line settings						 "
 " -------------------------------------------------------------- "
