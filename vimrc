@@ -73,6 +73,7 @@ autocmd BufRead,BufNewFile *.php set sw=4 sts=4 expandtab
 " by filetype
 autocmd FileType perl set expandtab
 autocmd FileType php set sw=4 sts=4 expandtab
+autocmd FileType markdown set sw=4 sts=4 expandtab
 
 " -------------------------------------------------------------- "
 "  Color Scheme							 "
