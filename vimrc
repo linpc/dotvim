@@ -97,6 +97,7 @@ hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231 
 if version >= 703
     highlight ColorColumn ctermbg=237 ctermfg=white guibg=#002929
     set colorcolumn=80
+    au FileType php set colorcolumn=120
 endif
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
