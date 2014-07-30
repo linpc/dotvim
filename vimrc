@@ -77,7 +77,7 @@ autocmd FileType markdown set sw=4 sts=4 expandtab
 autocmd FileType javascript set sw=8 ts=8 noexpandtab
 autocmd FileType yaml set sw=2 ts=2 expandtab
 
-au FileType c,cpp,javascript,perl,php set matchpairs+==:;
+autocmd FileType c,cpp,javascript,perl,php set matchpairs+==:;
 
 " -------------------------------------------------------------- "
 "  Color Scheme							 "
@@ -98,7 +98,7 @@ hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=231 
 if version >= 703
     highlight ColorColumn ctermbg=237 ctermfg=white guibg=#002929
     set colorcolumn=80
-    au FileType php set colorcolumn=120
+    autocmd FileType php set colorcolumn=120
 endif
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
