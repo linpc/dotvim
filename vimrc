@@ -77,7 +77,7 @@ autocmd FileType markdown set sw=4 sts=4 expandtab
 autocmd FileType javascript set sw=8 ts=8 noexpandtab
 autocmd FileType yaml set sw=2 ts=2 expandtab
 
-autocmd FileType c,cpp,javascript,perl,php set matchpairs+==:;
+" autocmd FileType c,cpp,javascript,perl,php set matchpairs+==:;
 
 " -------------------------------------------------------------- "
 "  Color Scheme							 "
