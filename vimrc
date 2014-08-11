@@ -14,7 +14,7 @@ set showmatch		" show the match brackets
 set matchpairs+=<:>	" Allow % to bounce between angles too "
 set showcmd		" Show (partial) command in the last line of the screen.
 set number		" show line numbers
-set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn,.git
 set showmode		" show current mode of Vi(m)
 set nomodeline		" security reason
 " set title		" set terminal title
