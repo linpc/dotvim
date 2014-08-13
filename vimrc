@@ -71,7 +71,7 @@ autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
 autocmd BufRead,BufNewFile *.php set sw=4 sts=4 expandtab
 
 " by filetype
-autocmd FileType perl set expandtab
+autocmd FileType perl set sw=4 sts=4 expandtab
 autocmd FileType php set sw=4 sts=4 expandtab
 autocmd FileType markdown set sw=4 sts=4 expandtab
 autocmd FileType javascript,json,html set sw=8 ts=8 noexpandtab
