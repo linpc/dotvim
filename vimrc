@@ -314,6 +314,8 @@ let g:mapleader=","
 nmap <leader>1 :w!<CR>
 " ,q to quick quit
 nmap <leader>q :q<CR>
+" ,1 to quick write
+nmap <leader>1 :w!<CR>
 " ,p toggles paste mode
 nmap <leader>p :set paste!<BAR>set paste?<CR>
 " ,/ toggles hlsearch mode
