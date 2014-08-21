@@ -68,7 +68,6 @@ autocmd BufRead,BufNewFile *.{md,pl,py} set expandtab
 autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 " set tabstop in LaTeX file
 autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
-autocmd BufRead,BufNewFile *.php set sw=4 sts=4 expandtab
 
 " by filetype
 autocmd FileType perl set sw=4 sts=4 expandtab
