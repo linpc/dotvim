@@ -21,6 +21,7 @@ set nomodeline		" security reason
 " show the cursor position all the time
 set nocompatible	" without Vi-compatible
 set scrolloff=3		" start scrolling when n lines away from margins
+set directory=~/tmp/.vimswap,.,~/tmp,/var/tmp,/tmp	" set vim swap path
 
 " disable sound on errors
 set noerrorbells
