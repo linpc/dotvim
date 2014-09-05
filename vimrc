@@ -74,6 +74,7 @@ autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
 autocmd FileType perl set sw=4 sts=4 expandtab
 autocmd FileType php set sw=4 sts=4 expandtab
 autocmd FileType markdown set sw=4 sts=4 expandtab
+autocmd FileType python set sw=4 sts=4 expandtab
 autocmd FileType javascript,json,html,css,xml set sw=8 ts=8 noexpandtab
 autocmd FileType yaml set sw=2 ts=2 expandtab
 
