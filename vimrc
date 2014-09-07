@@ -297,11 +297,6 @@ inoremap <UP> <Nop>
 inoremap <DOWN> <Nop>
 inoremap <LEFT> <Nop>
 inoremap <RIGHT> <Nop>
-" insert mode: map <C-[HJKL]> to arrow keys
-imap <C-H> <Esc>i
-imap <C-J> <Esc>ja
-imap <C-K> <Esc>ka
-imap <C-L> <Esc>la
 
 " double 0 == ^
 nmap 00 ^
