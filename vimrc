@@ -303,8 +303,9 @@ nmap 00 ^
 vmap 00 ^
 
 " set leader to ','
-let mapleader=","
-let g:mapleader=","
+map <SPACE> <Nop>
+let mapleader="\ "
+let g:mapleader="\ "
 
 " ,1 to quick write
 nmap <leader>1 :w!<CR>
