@@ -216,6 +216,7 @@ endfunction
 
 function ChangeNuMode()
     if (&number)
+	set nonu
 	set rnu
 	set rnu?
     elseif (&rnu)
