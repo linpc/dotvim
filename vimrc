@@ -71,6 +71,7 @@ autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
 
 " by filetype
+autocmd FileType sh set sw=4 sts=4 expandtab
 autocmd FileType perl set sw=4 sts=4 expandtab
 autocmd FileType php set sw=4 sts=4 expandtab
 autocmd FileType markdown set sw=4 sts=4 expandtab
