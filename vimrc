@@ -69,6 +69,8 @@ autocmd BufRead,BufNewFile *.{md,pl,py} set expandtab
 autocmd BufRead,BufNewFile bash-fc-* set filetype=sh
 " set tabstop in LaTeX file
 autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
+" so rare to do modula2 editing
+autocmd BufReadPost,BufNewFile *.md set filetype=markdown
 
 " by filetype
 autocmd FileType sh set sw=4 sts=4 expandtab
