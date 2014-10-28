@@ -104,6 +104,7 @@ if version >= 703
     highlight ColorColumn ctermbg=237 ctermfg=white guibg=#002929
     set colorcolumn=80
     autocmd FileType php set colorcolumn=120
+    autocmd FileType java set colorcolumn=100
 endif
 
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
