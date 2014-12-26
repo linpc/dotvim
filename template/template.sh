@@ -18,6 +18,8 @@ main()
 
     opt_handle $@
     shift $((${OPTIND} - 1))
+
+    exit 0
 }
 
 main $@
