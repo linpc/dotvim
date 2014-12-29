@@ -14,8 +14,6 @@ opt_handle()
 
 main()
 {
-    echo $@
-
     opt_handle $@
     shift $((${OPTIND} - 1))
 
