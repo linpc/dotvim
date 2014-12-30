@@ -1,11 +1,17 @@
 #!/bin/sh
 
+usage()
+{
+    echo 'Usage:'
+}
+
 opt_handle()
 {
     while getopts h op
     do
         case ${op} in
             *|h)
+                usage
                 exit 0
                 ;;
             esac
