@@ -3,6 +3,7 @@
 usage()
 {
     echo 'Usage:'
+    echo "    $0"
 }
 
 opt_handle()
