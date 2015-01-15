@@ -14,7 +14,7 @@ Just execute the update.sh script:
 
     ~/.vim/update.sh
 
-or you can update them manually:
+or you can do manual update:
 
     cd ~/.vim
     git pull origin master
