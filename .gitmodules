@@ -31,3 +31,6 @@
 [submodule "bundle/vim-template"]
 	path = bundle/vim-template
 	url = git://github.com/thinca/vim-template.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git://github.com/SirVer/ultisnips.git
