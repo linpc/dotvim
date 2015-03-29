@@ -10,7 +10,7 @@ How to install:
 Upgrading all bundled plugins:
 ------------------------------
 
-Just execute the update.sh script:
+Just run the update.sh script:
 
     ~/.vim/update.sh
 
