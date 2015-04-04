@@ -26,14 +26,14 @@ Install a new plugin as a git submodule:
 ----------------------------------------
 
     cd ~/.vim
-    git submodule add ${git-repository-url} bundle/${plugin-name}
+    git submodule add *<git-repository-url>* bundle/*<plugin-name>*
 
 Delete a submodule:
 -------------------
 
 1. Remove it from .gitmodules
-2. git rm --cached bundle/${plugin-name}
-3. rm -rf bundle/${plugin-name}
+2. git rm --cached bundle/*<plugin-name>*
+3. rm -rf bundle/*<plugin-name>*
 
 Plugins to be installed:
 ------------------------
