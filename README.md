@@ -14,14 +14,6 @@ Run the update script:
 
     ~/.vim/update.sh
 
-or you can do manual update:
-
-    cd ~/.vim
-    git pull origin master
-    git submodule init
-    git submodule update
-    git submodule foreach git pull origin master
-
 Install a new plugin as a git submodule:
 ----------------------------------------
 
