@@ -14,8 +14,8 @@ Run the update script:
 
     ~/.vim/update.sh
 
-Install a new plugin as a git submodule:
-----------------------------------------
+Install new plugin as a git submodule:
+--------------------------------------
 
     cd ~/.vim
     git submodule add <git-repository-url> bundle/<plugin-name>
