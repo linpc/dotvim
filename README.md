@@ -1,5 +1,5 @@
-How to install:
----------------
+Install:
+--------
 
     cd ~
     git clone http://github.com/linpc/dotvim.git ~/.vim
