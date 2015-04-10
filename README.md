@@ -7,7 +7,7 @@ Install:
     cd ~/.vim
     git submodule update --init
 
-Upgrading all bundled plugins:
+Upgrade all bundled plugins:
 ------------------------------
 
 Run the update script:
