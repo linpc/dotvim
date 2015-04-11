@@ -23,7 +23,7 @@ Install new plugin as a git submodule:
 Delete a submodule:
 -------------------
 
-1. Remove it from .gitmodules
+1. Remove it from `.gitmodules`
 2. `git rm --cached bundle/<plugin-name>`
 3. `rm -rf bundle/<plugin-name>`
 
