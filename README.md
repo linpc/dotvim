@@ -8,7 +8,7 @@ Install:
     git submodule update --init
 
 Upgrade all bundled plugins:
-------------------------------
+----------------------------
 
 Run:
 
