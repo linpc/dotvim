@@ -10,8 +10,6 @@ Install:
 Upgrade all bundled plugins:
 ----------------------------
 
-Run:
-
     ~/.vim/update.sh
 
 Install new plugin as a git submodule:
