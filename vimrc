@@ -73,6 +73,8 @@ autocmd BufRead,BufNewFile *.tex set tabstop=4 spell spelllang=en_us
 " so rare to do modula2 editing
 autocmd BufReadPost,BufNewFile *.md set filetype=markdown
 autocmd BufReadPost,BufNewFile *.ls set filetype=ls
+" set style for jsx file
+autocmd BufReadPost,BufNewFile *.jsx set filetype=javascript
 
 " by filetype
 autocmd FileType sh set sw=4 sts=4 expandtab
