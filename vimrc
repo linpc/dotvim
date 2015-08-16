@@ -163,8 +163,8 @@ nmap [D :tabprev<CR>
 nmap [C :tabnext<CR>
 imap [D <ESC>:tabprev<CR>
 imap [C <ESC>:tabnext<CR>
-inoremap jj <ESC>
-inoremap kk <ESC>
+" inoremap jj <ESC>
+" inoremap kk <ESC>
 
 " F8: move current tab to left
 nmap <silent> <F8> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
