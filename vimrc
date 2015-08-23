@@ -63,7 +63,6 @@ set spellfile=dict.en.add
 
 " by filename extension
 " set noexpandtab when editing Makefile
-"autocmd BufRead,BufNewFile ?akefile* set noexpandtab
 autocmd BufRead,BufNewFile ?akefile* set sw=8 ts=8
 " set expandtab when editing .py, .md
 autocmd BufRead,BufNewFile *.{md,pl,py} set expandtab
