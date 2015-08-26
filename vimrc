@@ -80,8 +80,7 @@ autocmd FileType sh set sw=4 sts=4 expandtab
 autocmd FileType perl set sw=4 sts=4 expandtab
 autocmd FileType php set sw=4 sts=4 expandtab
 autocmd FileType go set sw=4 sts=4 expandtab
-autocmd FileType markdown set sw=4 sts=4 expandtab
-autocmd FileType rst set sw=4 sts=4 expandtab
+autocmd FileType markdown,rst set sw=4 sts=4 expandtab
 autocmd FileType python set sw=4 sts=4 expandtab
 autocmd FileType html set sw=4 ts=4 noexpandtab
 autocmd FileType javascript,json,css,sass,scss,xml,ls set tabstop=4 sw=4 expandtab
