@@ -87,6 +87,7 @@ autocmd FileType javascript,json,css,sass,scss,xml,ls set tabstop=4 sw=4 expandt
 autocmd FileType yaml set sw=2 ts=2 expandtab
 autocmd FileType java set sw=2 ts=2 expandtab
 autocmd FileType groovy set sw=4 sts=4 expandtab
+autocmd FileType xml set sw=4 sts=4 noexpandtab
 
 " -------------------------------------------------------------- "
 "  Color Scheme							 "
