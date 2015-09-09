@@ -278,6 +278,7 @@ let g:syntastic_php_phpcs_args = "--standard=PSR2 --tab-width=4"
 
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
+" syntax highlighting
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
