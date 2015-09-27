@@ -276,6 +276,7 @@ let g:NERDTreeDirArrows = 0
 " bundle/syntastic
 let g:syntastic_php_phpcs_args = "--standard=PSR2 --tab-width=4"
 
+" bundle/vim-go
 " format with goimports instead of gofmt
 let g:go_fmt_command = "goimports"
 " syntax highlighting
