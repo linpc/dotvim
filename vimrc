@@ -21,7 +21,7 @@ set nomodeline		" security reason
 " show the cursor position all the time
 set nocompatible	" without Vi-compatible
 set scrolloff=3		" start scrolling when n lines away from margins
-set directory=~/tmp/.vimswap,.,~/tmp,/var/tmp,/tmp	" set vim swap path
+set directory=~/tmp/.vimswap,~/tmp,.,/var/tmp,/tmp	" set vim swap path
 set tabpagemax=100	" open multiple tabs with '-p' up to 100
 
 " disable sound on errors
