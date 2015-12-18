@@ -18,7 +18,7 @@ set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn,.git
 set showmode		" show current mode of Vi(m)
 set nomodeline		" security reason
 " set title		" set terminal title
-set cursorline		" show the cursor position all the time
+" set cursorline	" show the cursor position all the time
 set nocompatible	" without Vi-compatible
 set scrolloff=3		" start scrolling when n lines away from margins
 set directory=~/tmp/.vimswap,~/tmp,.,/tmp,/var/tmp	" set vim swap path
