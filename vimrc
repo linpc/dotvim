@@ -76,6 +76,7 @@ autocmd BufReadPost,BufNewFile *.ls set filetype=ls
 autocmd BufReadPost,BufNewFile *.jsx set filetype=javascript
 
 " by filetype
+autocmd FileType make set sw=8 ts=8 noexpandtab
 autocmd FileType sh set sw=4 sts=4 expandtab
 autocmd FileType perl set sw=4 sts=4 expandtab
 autocmd FileType php set sw=4 sts=4 expandtab
